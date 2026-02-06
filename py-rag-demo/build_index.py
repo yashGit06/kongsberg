@@ -4,14 +4,14 @@ from dotenv import load_dotenv
 
 from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
-#from langchain.text_splitter import RecursiveCharacterTextSplitter
-#from langchain.textsplitters import RecursiveCharacterTextSplitter
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.docstore.document import Document
+from langchain_core.documents import Document
 
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY not found. Check your .env file.")
 
 # 1. Your corpus (replace with file loaders in your training later)
 raw_docs = [
@@ -44,5 +44,4 @@ vectorstore = Chroma.from_documents(
     persist_directory=PERSIST_DIR,
 )
 
-vectorstore.persist()
 print("Chroma index built at", PERSIST_DIR)

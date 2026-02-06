@@ -356,3 +356,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ChromaDB / Vector Stores
+chroma-store/
+chroma_data/
+vectorstore.json
+*.db
+*.sqlite

@@ -10,3 +10,4 @@ pip install \
   chromadb \
   tiktoken \
   python-dotenv
+  
